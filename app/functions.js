@@ -5,7 +5,9 @@ exports.functionsAnswers = {
     return fn(arr[0], arr[1], arr[2]);
   },
 
-  speak: function(fn, obj) {},
+  speak: function(fn, obj) {
+    return fn.apply(obj, [obj.greeting, obj.name]);
+  },
 
   functionFunction: function(str) {
     return function(str2) {
@@ -36,8 +38,10 @@ exports.functionsAnswers = {
   },
 
   callIt: function(fn) {
-    var args = Array.prototype.slice(arguments);
-    return fn.call(this, args);
+    console.log(arguments);
+    var args = Array.prototype.slice.call(arguments);
+    console.log(args);
+    return fn.apply(this, args.pop());
   },
 
   partialUsingArguments: function(fn) {},
