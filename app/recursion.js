@@ -10,14 +10,13 @@ exports.recursionAnswers = {
           if (file.dir) {
             traverse(file);
           } else {
-            console.log('pushing ', file);
             files.push(file);
           }
         });
       }
     }
     traverse(data);
-    console.log(files);
+
     return files;
   },
 

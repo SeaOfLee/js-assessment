@@ -1,4 +1,4 @@
-exports = typeof window === 'undefined' ? global : window;
+exports = typeof window === "undefined" ? global : window;
 
 exports.arraysAnswers = {
   indexOf: function(arr, item) {
@@ -20,10 +20,15 @@ exports.arraysAnswers = {
   },
 
   removeWithoutCopy: function(arr, item) {
-    arr.map(function(thing, index) {
+    var indices = [];
+    arr.forEach(function(thing, index) {
       if (thing === item) {
-        arr.splice(index, 1);
+        indices.push(index);
       }
+    });
+    indices.reverse();
+    indices.forEach(function(index) {
+      arr.splice(index, 1);
     });
     return arr;
   },
@@ -67,10 +72,10 @@ exports.arraysAnswers = {
     let nums = [];
     let dupes = [];
     while (nums.length < arr.length) {
-      nums.push('');
+      nums.push("");
     }
     arr.map(function(item) {
-      if (nums[item] === '') {
+      if (nums[item] === "") {
         nums[item] = 1;
       } else {
         nums[item]++;
