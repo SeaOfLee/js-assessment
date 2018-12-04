@@ -1,4 +1,4 @@
-exports = typeof window === 'undefined' ? global : window;
+exports = typeof window === "undefined" ? global : window;
 
 exports.functionsAnswers = {
   argsAsArray: function(fn, arr) {
@@ -11,7 +11,7 @@ exports.functionsAnswers = {
 
   functionFunction: function(str) {
     return function(str2) {
-      return str + ', ' + str2;
+      return str + ", " + str2;
     };
   },
 
@@ -38,13 +38,22 @@ exports.functionsAnswers = {
   },
 
   callIt: function(fn) {
-    console.log(arguments);
     var args = Array.prototype.slice.call(arguments);
-    console.log(args);
-    return fn.apply(this, args.pop());
+    args.shift();
+
+    return fn.apply(this, args);
   },
 
-  partialUsingArguments: function(fn) {},
+  partialUsingArguments: function(fn) {
+    var args = Array.prototype.slice.call(arguments);
+    args.shift();
 
-  curryIt: function(fn) {}
+    return fn.bind(null, ...args);
+  },
+
+  curryIt: function(fn) {
+    var args = Array.prototype.slice.call(arguments);
+    console.log(args);
+    args.shift();
+  }
 };
